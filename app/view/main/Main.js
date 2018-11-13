@@ -88,6 +88,9 @@ Ext.define("TutorialApp.view.main.Main", {
         {
           //xtype: "emailmenu"
           xtype: "emailmenu"
+        },
+        {
+          xtype: "messages"
         }
       ]
     },

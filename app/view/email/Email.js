@@ -13,13 +13,9 @@ Ext.define("TutorialApp.view.email.Email", {
   iconCls: "x-fa fa-inbox",
 
   floating: false,
+  width: "auto",
 
   items: [
-    {
-      iconCls: "iconCls",
-      text: "text"
-    },
-
     {
       routeId: "emailcompose", //xtype and used for url routing
 

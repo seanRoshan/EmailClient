@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "records": [
+    {
+      "recordid": "883959e8-f483-11e6-8b10-d4ae52cc00a8",
+      "created": "2017-02-16 15:07:29",
+      "sender": "Sender1 (sender1@somewhere.com)",
+      "recipientlist": "Receiver1 (receiver1@somewhere.com)",
+      "subject": "Test Message",
+      "priority": "1",
+      "messagetext": "<p>werwerwerwrewerwerwr</p>",
+      "senderid": "651a17f3-e572-11e6-b2b8-d4ae52cc00a8"
+    },
+    {
+      "recordid": "a4ac9b5c-f486-11e6-8b10-d4ae52cc00a8",
+      "created": "2017-02-16 15:29:55",
+      "sender": "Sender1 (sender1@somewhere.com)",
+      "recipientlist": "Receiver1 (receiver1@somewhere.com)",
+      "subject": "Test Message 2",
+      "priority": "1",
+      "messagetext": "<p>ewrwewrw</p>",
+      "senderid": "651a17f3-e572-11e6-b2b8-d4ae52cc00a8"
+    },
+    {
+      "recordid": "cd8dad3c-f48c-11e6-8b10-d4ae52cc00a8",
+      "created": "2017-02-16 16:14:05",
+      "sender": "Sender1 (sender1@somewhere.com)",
+      "recipientlist": "Receiver1 (receiver1@somewhere.com)",
+      "subject": "Test Message with a lot of text",
+      "priority": "1",
+      "messagetext": "<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: 'Open Sans', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "senderid": "651a17f3-e572-11e6-b2b8-d4ae52cc00a8"
+    }
+  ]
+}
