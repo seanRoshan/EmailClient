@@ -1,23 +1,18 @@
 {
-  "recordid": "root",
-  "usrdataid": "",
   "foldername": "",
-  "folderttype": 0,
-  "system": 1,
   "children": [
     {
-      "recordid": "mailboxes",
       "foldername": "<b>Mail</b>",
-      "foldertype": 0,
-      "system": 1,
       "expanded": true,
       "iconCls": "x-fa fa-user-circle",
       "children": [
         {
-          "recordid": "57a1a56f-f137-11e6-8526-d4ae52cc00a8",
           "foldername": "Inbox",
-          "foldertype": 1,
-          "system": 1,
+          "iconCls": "x-fa fa-inbox",
+          "expandable": false
+        },
+        {
+          "foldername": "Mail",
           "iconCls": "x-fa fa-inbox",
           "expandable": false
         }
