@@ -37,7 +37,7 @@ Ext.define("TutorialApp.view.mailbox.MsgDataModel", {
   idProperty: "recordid",
   proxy: {
     type: "ajax",
-    url: "../../../resources/data/data2.json",
+    url: "",
     reader: {
       type: "json",
       rootProperty: "records"

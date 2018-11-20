@@ -78,42 +78,13 @@ Ext.define("TutorialApp.view.main.Main", {
 
   items: [
     {
-      title: "Home",
-      iconCls: "fa-home",
-      // The following grid shares a store with the classic version's grid as well!
+      title: "Email",
+      iconCls: "fa-envelope-o",
       items: [
-        {
-          xtype: "mainlist"
-        },
-        {
-          //xtype: "emailmenu"
-          xtype: "emailmenu"
-        },
         {
           xtype: "messages"
         }
       ]
-    },
-    {
-      title: "Users",
-      iconCls: "fa-user",
-      bind: {
-        html: "{loremIpsum}"
-      }
-    },
-    {
-      title: "Groups",
-      iconCls: "fa-users",
-      bind: {
-        html: "{loremIpsum}"
-      }
-    },
-    {
-      title: "Settings",
-      iconCls: "fa-cog",
-      bind: {
-        html: "{loremIpsum}"
-      }
     }
   ]
 });

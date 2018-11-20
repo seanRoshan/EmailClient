@@ -8,7 +8,7 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
   columns: {
     defaults: {
       align: "left",
-      menuDisabled: true
+      menuDisabled: false
     },
     items: [
       {
@@ -16,11 +16,11 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
         dataIndex: "sender",
         flex: 0.5
       },
-      {
-        header: "To",
-        dataIndex: "recipientlist",
-        flex: 0.5
-      },
+      // {
+      //   header: "To",
+      //   dataIndex: "recipientlist",
+      //   flex: 0.5
+      // },
       {
         header: "Subject",
         dataIndex: "subject",

@@ -2,7 +2,7 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
   extend: "Ext.tree.Panel",
   xtype: "mailboxes",
   store: Ext.create("TutorialApp.view.mailbox.MflDataStore"),
-  useArrows: true,
+  useArrows: false,
   align: "left",
   rootVisible: false,
   hideHeaders: true,
