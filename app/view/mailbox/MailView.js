@@ -1,6 +1,8 @@
 Ext.define("TutorialApp.view.mailbox.MailView", {
   extend: "Ext.panel.Panel",
   xtype: "mailview",
+
+  controller: "email",
   //width: 1200,
   //height: 800,
   flex: 1,
@@ -14,50 +16,22 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
       flex: 0.15,
       margin: 5,
       listeners: {
-        itemclick: function(node, rec) {
-          //console.log(rec.data);
-          //console.log(rec.data.foldername);
-          const folderName = rec.data.foldername;
-
-          if (folderName !== "Compose") {
-            const resourseURL = rec.data.resourceUrl;
-
-            let storeObj = Ext.create("TutorialApp.view.mailbox.MsgDataStore");
-            storeObj
-              .getModel()
-              .getProxy()
-              .setUrl(resourseURL);
-
-            storeObj.load(function(data) {
-              console.log(data);
-            });
-
-            var me = this,
-              store = storeObj,
-              grid = me
-                .getView()
-                .up("mailview")
-                .down("msgdatagrid"),
-              oldStore = grid.store;
-            if (oldStore) {
-              oldStore.destroy();
-            }
-            store.load({
-              callback: function(records, operation, success) {
-                if (success === true) {
-                  grid.setStore(store);
-                }
-              },
-              scope: me
-            });
-          }
-        }
+        itemclick: "onItemClick"
       }
     },
     {
-      xtype: "msgdatagrid",
-      flex: 0.8,
-      margin: 5
+      xtype: "container",
+      itemId: "contentPanel",
+      flex: 0.85,
+      layout: {
+        type: "anchor",
+        anchor: "100%"
+      }
     }
+    // {
+    //   xtype: "msgdatagrid",
+    //   flex: 0.8,
+    //   margin: 5
+    // }
   ]
 });
