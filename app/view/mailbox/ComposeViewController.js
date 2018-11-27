@@ -19,9 +19,20 @@ Ext.define("TutorialApp.view.mailbox.ComposeViewController", {
     let emailText = contentPanel.down("#htmlEditor").value;
     console.log(emailText);
 
+    let attachments = contentPanel.down("#attachments").down("#FileData");
+    console.log(attachments);
+
     // var win = bt.up("window");
     // if (win) {
     //   win.close();
     // }
+  },
+
+  onUploadClick: function() {
+    let myView = this.getView()
+      .down("#attachments")
+      .down("#FileData")
+      .getForm();
+    console.log(myView);
   }
 });

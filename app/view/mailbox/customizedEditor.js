@@ -12,7 +12,6 @@ Ext.define("TutorialApp.view.mailbox.customizedEditor", {
         Ext.Msg.alert("Dear user!", "No, we won't help you!");
       }
     });
-
     // return toolbar to calling function
     return toolbar;
   }

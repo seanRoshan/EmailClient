@@ -75,6 +75,7 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
         xtype: "filefield",
         width: 400,
         labelWidth: 80,
+        multiple: true,
         fieldLabel: "Attachment",
         labelSeparator: "",
         buttonConfig: {
