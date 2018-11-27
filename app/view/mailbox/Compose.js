@@ -32,14 +32,27 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
   items: [
     {
       xtype: "textfield",
-      fieldLabel: "To"
+      fieldLabel: "To",
+      itemId: "to"
     },
     {
       xtype: "textfield",
-      fieldLabel: "Subject"
+      fieldLabel: "Cc",
+      itemId: "cc"
     },
     {
-      xtype: "htmleditor",
+      xtype: "textfield",
+      fieldLabel: "Bcc",
+      itemId: "bcc"
+    },
+    {
+      xtype: "textfield",
+      fieldLabel: "Subject",
+      itemId: "subject"
+    },
+    {
+      xtype: "customizededitor",
+      itemId: "htmlEditor",
 
       // Make tips align neatly below buttons.
       buttonDefaults: {
@@ -74,18 +87,19 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
       "->",
       {
         xtype: "button",
-        ui: "soft-red",
+        //ui: "soft-red",
         text: "Discard",
         handler: "onComposeDiscardClick"
       },
       {
         xtype: "button",
-        ui: "gray",
+        //ui: "gray",
+        handler: "onComposeSaveClick",
         text: "Save"
       },
       {
         xtype: "button",
-        ui: "soft-green",
+        //ui: "soft-green",
         text: "Send"
       }
     ]
