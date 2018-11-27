@@ -70,10 +70,13 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
 
   bbar: {
     overflowHandler: "menu",
+    itemId: "attachments",
     items: [
       {
         xtype: "filefield",
-        width: 400,
+        itemId: "uploads",
+        name: "fileNames",
+        width: 800,
         labelWidth: 80,
         multiple: true,
         fieldLabel: "Attachment",
@@ -83,6 +86,19 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
           glyph: "",
           iconCls: "x-fa fa-cloud-upload",
           text: "Browse"
+        },
+        listeners: {
+          change: function(filefield, newFileName, oldFileName) {
+            var displayFileNames = this.up("form")
+                .getForm()
+                .findField("fileNames"),
+              fileList = filefield.getFileList(),
+              fileNames = Ext.Array.pluck(fileList, "name");
+            displayFileNames.setValue(fileNames.join(","));
+            console.log(fileList);
+            console.log(fileNames);
+            console.log(displayFileNames);
+          }
         }
       },
       "->",
