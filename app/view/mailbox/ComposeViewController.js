@@ -19,12 +19,26 @@ Ext.define("TutorialApp.view.mailbox.ComposeViewController", {
     let emailText = contentPanel.down("#htmlEditor").value;
     console.log(emailText);
 
-    let attachments = contentPanel.down("#attachments").down("#uploads");
+    let attachments = contentPanel.down("#attachments").down("#fileNames")
+      .value;
     console.log(attachments);
+
+    // let directory = contentPanel.down("#attachments").down("#uploads").value;
+    // console.log(directory);
 
     // var win = bt.up("window");
     // if (win) {
     //   win.close();
     // }
+  },
+
+  onComposeBrowseClick: function(filefield) {
+    var displayFileNames = filefield
+        .up("form")
+        .getForm()
+        .findField("fileNames"),
+      fileList = filefield.getFileList(),
+      fileNames = Ext.Array.pluck(fileList, "name");
+    displayFileNames.setValue(fileNames.join(", "));
   }
 });

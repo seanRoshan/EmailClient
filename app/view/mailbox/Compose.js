@@ -1,6 +1,7 @@
 Ext.define("TutorialApp.view.mailbox.Compose", {
   extend: "Ext.form.Panel",
   alias: "widget.emailcompose",
+  itemId: "composeform",
   requires: [
     "Ext.button.Button",
     "Ext.form.field.Text",
@@ -73,14 +74,24 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
     itemId: "attachments",
     items: [
       {
+        xtype: "textfield",
+        fieldLabel: "Attachments",
+        name: "fileNames",
+        itemId: "fileNames",
+        readOnly: true,
+        labelAlign: "left",
+        allowBlank: false,
+        width: 800,
+        submitValue: false
+      },
+      {
         xtype: "filefield",
         itemId: "uploads",
-        name: "fileNames",
-        width: 800,
-        labelWidth: 80,
+        name: "file",
         multiple: true,
-        fieldLabel: "Attachment",
-        labelSeparator: "",
+        hideLabel: true,
+        buttonOnly: true,
+        width: 80,
         buttonConfig: {
           xtype: "filebutton",
           glyph: "",
@@ -88,17 +99,7 @@ Ext.define("TutorialApp.view.mailbox.Compose", {
           text: "Browse"
         },
         listeners: {
-          change: function(filefield, newFileName, oldFileName) {
-            var displayFileNames = this.up("form")
-                .getForm()
-                .findField("fileNames"),
-              fileList = filefield.getFileList(),
-              fileNames = Ext.Array.pluck(fileList, "name");
-            displayFileNames.setValue(fileNames.join(","));
-            console.log(fileList);
-            console.log(fileNames);
-            console.log(displayFileNames);
-          }
+          change: "onComposeBrowseClick"
         }
       },
       "->",
