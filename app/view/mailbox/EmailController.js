@@ -34,6 +34,7 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
       view === "" ||
       (contentPanel.down() && contentPanel.down().viewName === folderName)
     ) {
+      console.log("false");
       return false;
     }
 
@@ -87,29 +88,39 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
             myMask.hide();
           }
         });
+      } else if (folderName === "Details") {
+        Ext.suspendLayouts();
+
+        contentPanel.removeAll(true);
+        contentPanel.add(
+          Ext.apply(
+            {
+              xtype: view
+            },
+            params
+          )
+        );
+
+        Ext.resumeLayouts(true);
       }
     }
+  },
+
+  onGridCellItemClick: function(view, td, cellIndex, record) {
+    this.setCurrentView("emaildetails", { record: record }, "", "Details");
+    // if (cellIndex > 1) {
+    //   this.setCurrentView("emaildetails", { record: record });
+    // } else if (cellIndex === 1) {
+    //   //Invert selection
+    //   record.set("favorite", !record.get("favorite"));
+    // }
+  },
+
+  beforeDetailsRender: function(view) {
+    var record = view.record ? view.record : {};
+    view.down("#mailBody").setHtml(record.get("contents"));
+    view.down("#attachments").setData(record.get("attachments"));
+    view.down("#emailSubjectContainer").setData(record.data ? record.data : {});
+    view.down("#userImage").setSrc("resources/images/user-profile/" + "1.png");
   }
-
-  //   onGridCellItemClick: function(view, td, cellIndex, record) {
-  //     if (cellIndex > 1) {
-  //       this.setCurrentView("emaildetails", { record: record });
-  //     } else if (cellIndex === 1) {
-  //       //Invert selection
-  //       record.set("favorite", !record.get("favorite"));
-  //     }
-  //   },
-
-  //   beforeDetailsRender: function(view) {
-  //     var record = view.record ? view.record : {};
-
-  //     view.down("#mailBody").setHtml(record.get("contents"));
-  //     view.down("#attachments").setData(record.get("attachments"));
-  //     view.down("#emailSubjectContainer").setData(record.data ? record.data : {});
-  //     view
-  //       .down("#userImage")
-  //       .setSrc(
-  //         "resources/images/user-profile/" + record.get("user_id") + ".png"
-  //       );
-  //   }
 });
