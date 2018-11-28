@@ -14,6 +14,8 @@ Ext.define("TutorialApp.view.mailbox.Details", {
     type: "emaildetails"
   },
 
+  controller: "emaildetail",
+
   cls: "shadow",
 
   bodyPadding: 10,

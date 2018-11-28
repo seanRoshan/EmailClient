@@ -8,10 +8,6 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
     //this.setCurrentView("msgdatagrid");
   },
 
-  //   onBackBtnClick: function() {
-  //     this.setCurrentView("inbox");
-  //   },
-
   onItemClick: function(node, rec) {
     const folderName = rec.data.foldername;
     if (folderName !== "Compose") {
@@ -45,7 +41,8 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
           items: [
             Ext.apply(
               {
-                xtype: view
+                xtype: view,
+                record: params.record
               },
               params.targetCfg
             )
@@ -107,7 +104,12 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
   },
 
   onGridCellItemClick: function(view, td, cellIndex, record) {
-    this.setCurrentView("emaildetails", { record: record }, "", "Details");
+    this.setCurrentView(
+      "emaildetails",
+      { record: record, openWindow: true },
+      "",
+      "Details"
+    );
     // if (cellIndex > 1) {
     //   this.setCurrentView("emaildetails", { record: record });
     // } else if (cellIndex === 1) {
