@@ -55,7 +55,6 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
                 Ext.apply(
                   {
                     xtype: view,
-                    record: params.record,
                     obj: obj
                   },
                   params.targetCfg
@@ -86,8 +85,7 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
           items: [
             Ext.apply(
               {
-                xtype: view,
-                record: params.record
+                xtype: view
               },
               params.targetCfg
             )

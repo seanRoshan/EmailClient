@@ -3,12 +3,18 @@ Ext.define("TutorialApp.view.mailbox.DetailsViewController", {
   alias: "controller.emaildetail",
 
   beforeDetailsRender: function(view) {
-    var record = view.record ? view.record : {};
     let obj = view.obj ? view.obj : {};
-    console.log(obj);
-    //this.ajaxCall(record.data.resource_url, view);
-    //view.down("#attachments").setData(record.get("attachments"));
-    view.down("#mailBody").setHtml(obj.bodies[0].content);
+
+    // Fix the issue if the first Email body is in just plain text
+    // Example: Emails from the indeed.com
+    if (obj.bodies.length >= 2) {
+      if (obj.bodies[0].type === "text/plain") {
+        view.down("#mailBody").setHtml(obj.bodies[1].content);
+      }
+    } else {
+      view.down("#mailBody").setHtml(obj.bodies[0].content);
+    }
+
     view
       .down("#emailSubjectContainer")
       .setData({ title: obj.subject, from: obj.addresses.from[0].name });
@@ -20,45 +26,5 @@ Ext.define("TutorialApp.view.mailbox.DetailsViewController", {
     if (win) {
       win.close();
     }
-  },
-
-  ajaxCall: function(resource_url, view) {
-    //console.log("Window");
-
-    let windows = this.getView().up();
-
-    //console.log(windows.up());
-
-    //new Ext.LoadMask(this.view.el, { msg: "Please wait..." });
-
-    // let myWindowMask = new Ext.LoadMask({
-    //   msg: "Please wait...",
-    //   padding: 100,
-    //   target: windows
-    // });
-    //myWindowMask.show();
-
-    Ext.Ajax.request({
-      url: resource_url,
-
-      success: function(response, opts) {
-        var obj = Ext.decode(response.responseText);
-        view.down("#mailBody").setHtml(obj.bodies[0].content);
-        view
-          .down("#emailSubjectContainer")
-          .setData({ title: obj.subject, from: obj.addresses.from[0].name });
-        view
-          .down("#userImage")
-          .setSrc("resources/images/" + "profile_mask_2x.png");
-
-        //myWindowMask.hide();
-
-        return response;
-      },
-
-      failure: function(response, opts) {
-        console.log("server-side failure with status code " + response.status);
-      }
-    });
   }
 });
