@@ -32,6 +32,10 @@ Ext.define("TutorialApp.view.mailbox.MsgDataModel", {
     {
       name: "messagetext",
       type: "string"
+    },
+    {
+      name: "resource_url",
+      type: "string"
     }
   ],
   idProperty: "recordid",

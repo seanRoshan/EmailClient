@@ -116,13 +116,5 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
     //   //Invert selection
     //   record.set("favorite", !record.get("favorite"));
     // }
-  },
-
-  beforeDetailsRender: function(view) {
-    var record = view.record ? view.record : {};
-    view.down("#mailBody").setHtml(record.get("contents"));
-    view.down("#attachments").setData(record.get("attachments"));
-    view.down("#emailSubjectContainer").setData(record.data ? record.data : {});
-    view.down("#userImage").setSrc("resources/images/user-profile/" + "1.png");
   }
 });

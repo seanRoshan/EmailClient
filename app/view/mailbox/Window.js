@@ -2,6 +2,7 @@ Ext.define("Admin.view.email.Window", {
   extend: "Ext.window.Window",
   alias: "widget.emailwindow",
   autoShow: true,
+  autoScroll: true,
   modal: true,
 
   layout: "fit",
