@@ -3,9 +3,6 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
   xtype: "mailview",
 
   controller: "email",
-  //width: 1200,
-  //height: 800,
-  flex: 1,
   layout: {
     type: "hbox",
     align: "left"
@@ -16,32 +13,27 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
 
       itemId: "navigationPanel",
 
+      cls: "email-navigation-panel",
+
       layout: {
         type: "vbox",
         align: "stretch"
       },
 
-      width: "30%",
-      minWidth: 180,
-      maxWidth: 240,
-
-      defaults: {
-        cls: "navigation-email",
-        margin: "0 20 20 0"
-      },
+      width: "20%",
 
       items: [
         {
           xtype: "mailboxes",
-          flex: 0.15,
+          //flex: 0.2,
           margin: 5,
           listeners: {
             itemclick: "onItemClick"
           }
         },
         {
-          xtype: "mailboxes",
-          flex: 0.15,
+          xtype: "emailfriendslist",
+          //flex: 0.2,
           margin: 5,
           listeners: {
             itemclick: "onItemClick"
@@ -53,7 +45,7 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
     {
       xtype: "container",
       itemId: "contentPanel",
-      flex: 0.85,
+      flex: 0.8,
       layout: {
         type: "anchor",
         anchor: "100%"

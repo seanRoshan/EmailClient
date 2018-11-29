@@ -3,7 +3,7 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
   xtype: "mailboxes",
   store: Ext.create("TutorialApp.view.mailbox.MflDataStore"),
   useArrows: false,
-  align: "left",
+  align: "stretch",
   rootVisible: false,
   hideHeaders: true,
   columns: [
