@@ -4,8 +4,15 @@ Ext.define("TutorialApp.view.mailbox.DetailsViewController", {
 
   beforeDetailsRender: function(view) {
     var record = view.record ? view.record : {};
-    this.ajaxCall(record.data.resource_url, view);
+    let obj = view.obj ? view.obj : {};
+    console.log(obj);
+    //this.ajaxCall(record.data.resource_url, view);
     //view.down("#attachments").setData(record.get("attachments"));
+    view.down("#mailBody").setHtml(obj.bodies[0].content);
+    view
+      .down("#emailSubjectContainer")
+      .setData({ title: obj.subject, from: obj.addresses.from[0].name });
+    view.down("#userImage").setSrc("resources/images/" + "profile_mask_2x.png");
   },
 
   onBackBtnClick: function(bt) {

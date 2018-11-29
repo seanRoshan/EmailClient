@@ -34,6 +34,51 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
       return false;
     }
 
+    if (folderName == "Details") {
+      let myMask = new Ext.LoadMask({
+        msg: "Please wait...",
+        padding: 100,
+        target: contentPanel
+      });
+
+      myMask.show();
+
+      Ext.Ajax.request({
+        url: params.record.data.resource_url,
+
+        success: function(response, opts) {
+          var obj = Ext.decode(response.responseText);
+          var cfg = Ext.apply(
+            {
+              xtype: "emailwindow",
+              items: [
+                Ext.apply(
+                  {
+                    xtype: view,
+                    record: params.record,
+                    obj: obj
+                  },
+                  params.targetCfg
+                )
+              ]
+            },
+            params.windowCfg
+          );
+
+          myMask.hide();
+          Ext.create(cfg);
+        },
+
+        failure: function(response, opts) {
+          console.log(
+            "server-side failure with status code " + response.status
+          );
+        }
+      });
+
+      return;
+    }
+
     if (params && params.openWindow) {
       var cfg = Ext.apply(
         {
