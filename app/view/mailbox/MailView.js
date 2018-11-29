@@ -12,13 +12,44 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
   },
   items: [
     {
-      xtype: "mailboxes",
-      flex: 0.15,
-      margin: 5,
-      listeners: {
-        itemclick: "onItemClick"
-      }
+      xtype: "container",
+
+      itemId: "navigationPanel",
+
+      layout: {
+        type: "vbox",
+        align: "stretch"
+      },
+
+      width: "30%",
+      minWidth: 180,
+      maxWidth: 240,
+
+      defaults: {
+        cls: "navigation-email",
+        margin: "0 20 20 0"
+      },
+
+      items: [
+        {
+          xtype: "mailboxes",
+          flex: 0.15,
+          margin: 5,
+          listeners: {
+            itemclick: "onItemClick"
+          }
+        },
+        {
+          xtype: "mailboxes",
+          flex: 0.15,
+          margin: 5,
+          listeners: {
+            itemclick: "onItemClick"
+          }
+        }
+      ]
     },
+
     {
       xtype: "container",
       itemId: "contentPanel",
