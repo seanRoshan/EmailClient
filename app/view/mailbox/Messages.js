@@ -11,16 +11,16 @@ Ext.define("TutorialApp.view.mailbox.Messages", {
           xtype: "mailview"
         }
       ]
-    }
-    // {
-    //   xtype: "panel",
-    //   title: "Mailbox 2",
+    },
+    {
+      xtype: "panel",
+      title: "+",
 
-    //   items: [
-    //     {
-    //       xtype: "mailview"
-    //     }
-    //   ]
-    // }
+      items: [
+        {
+          xtype: "mailview"
+        }
+      ]
+    }
   ]
 });

@@ -2,6 +2,13 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
   extend: "Ext.grid.Panel",
   xtype: "msgdatagrid",
   loadMask: true,
+
+  multiSelect: true,
+  viewConfig: {
+    plugins: {
+      ptype: "gridviewdragdrop"
+    }
+  },
   //store: Ext.create("TutorialApp.view.mailbox.MsgDataStore"),
   selModel: {
     type: "checkboxmodel"

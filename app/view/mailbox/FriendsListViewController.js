@@ -28,10 +28,10 @@ Ext.define("TutorialApp.view.mailbox.FriendsListViewController", {
     for (i = 0; i < len; i++) {
       arr.push({
         xtype: "menuitem",
-        text: records[i].get("name"),
-        cls:
-          "font-icon " +
-          (records[i].get("online") ? "online-user" : "offline-user")
+        text: records[i].get("name")
+        // cls:
+        //   "font-icon " +
+        //   (records[i].get("online") ? "online-user" : "offline-user")
       });
     }
 
