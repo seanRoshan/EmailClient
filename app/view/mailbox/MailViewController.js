@@ -1,19 +1,33 @@
-Ext.define("TutorialApp.view.mailbox.EmailController", {
+Ext.define("TutorialApp.view.mailbox.MailViewController", {
   extend: "Ext.app.ViewController",
+  alias: "controller.mailview",
 
-  alias: "controller.email",
-
-  init: function() {
-    //this.setCurrentView("inbox");
-    //this.setCurrentView("msgdatagrid");
+  // //Creation of tager variable for drop.
+  // formPanelDropTarget: Ext.create("Ext.dd.DropTarget", formPanelDropTargetEl, {
+  //   ddGroup: "GridExample",
+  //   notifyEnter: function(ddSource, e, data) {
+  //     formPanel.body.stopAnimation();
+  //     formPanel.body.highlight();
+  //   },
+  //   notifyDrop: function(ddSource, e, data) {
+  //     var selectedRecord = ddSource.dragData.records[0];
+  //     formPanel.getForm().loadRecord(selectedRecord);
+  //     ddSource.view.store.remove(selectedRecord);
+  //     return true;
+  //   }
+  // }),
+  init: function(view) {
+    console.log("Mailbox initialized!");
+    //let mailboxPanel = view.down("#mailboxes");
+    //let mailboxDropTargetEl = mailboxPanel.body;
+    //console.log(formPanelDropTargetEl);
   },
 
   onItemClick: function(node, rec) {
     const folderName = rec.data.foldername;
     if (folderName !== "Compose") {
       const resourceURL = rec.data.resourceUrl;
-      const nbMessages = rec.data.nb_messages;
-      this.setCurrentView("msgdatagrid", nbMessages, resourceURL, folderName);
+      this.setCurrentView("msgdatagrid", 1, resourceURL, folderName);
     } else {
       this.setCurrentView(rec.data.routeId, rec.data.params, folderName);
     }
@@ -46,6 +60,7 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
 
       Ext.Ajax.request({
         url: params.record.data.resource_url,
+
         success: function(response, opts) {
           var obj = Ext.decode(response.responseText);
           var cfg = Ext.apply(
@@ -103,8 +118,7 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
           Ext.apply({
             xtype: view,
             viewName: folderName,
-            itemId: "inboxPanel",
-            nbMessages: params
+            itemId: "inboxPanel"
           })
         );
         let inboxPanel = contentPanel.down("#inboxPanel");
@@ -123,16 +137,6 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
           .getModel()
           .getProxy()
           .setUrl(resourceURL);
-
-        storeObj
-          .getModel()
-          .getProxy()
-          .setExtraParams({
-            offset: 0,
-            limit: 25,
-            total: params
-          });
-
         storeObj.load(function(data, operation, success) {
           if (success === true) {
             inboxPanel.setStore(storeObj);
@@ -166,11 +170,16 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
         "Details"
       );
     }
-    // if (cellIndex > 1) {
-    //   this.setCurrentView("emaildetails", { record: record });
-    // } else if (cellIndex === 1) {
-    //   //Invert selection
-    //   record.set("favorite", !record.get("favorite"));
-    // }
+  },
+
+  onGridCellItemDrag: function(view, td, cellIndex, record) {
+    console.log("Drag");
   }
+
+  // if (cellIndex > 1) {
+  //   this.setCurrentView("emaildetails", { record: record });
+  // } else if (cellIndex === 1) {
+  //   //Invert selection
+  //   record.set("favorite", !record.get("favorite"));
+  // }
 });

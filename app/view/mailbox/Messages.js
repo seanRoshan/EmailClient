@@ -1,6 +1,10 @@
 Ext.define("TutorialApp.view.mailbox.Messages", {
   extend: "Ext.tab.Panel",
   xtype: "messages",
+
+  layout: "fit",
+  height: "100%",
+
   items: [
     {
       xtype: "panel",

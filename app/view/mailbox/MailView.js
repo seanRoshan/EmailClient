@@ -52,10 +52,5 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
         anchor: "100%"
       }
     }
-    // {
-    //   xtype: "msgdatagrid",
-    //   flex: 0.8,
-    //   margin: 5
-    // }
   ]
 });

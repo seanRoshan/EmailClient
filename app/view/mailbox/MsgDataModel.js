@@ -44,7 +44,8 @@ Ext.define("TutorialApp.view.mailbox.MsgDataModel", {
     url: "../../../resources/data/data2.json",
     reader: {
       type: "json",
-      rootProperty: "records"
+      rootProperty: "records",
+      totalProperty: "total"
     }
   }
 });
