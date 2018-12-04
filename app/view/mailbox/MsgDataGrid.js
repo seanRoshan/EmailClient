@@ -4,8 +4,6 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
 
   cls: "email-data-grid",
 
-  total: 0,
-
   //controller: "msgdatagrid",
 
   requires: ["Ext.toolbar.Paging", "Ext.ux.ProgressBarPager"],
@@ -82,7 +80,7 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
         storeProxy.setExtraParams({
           offset: currentPage * 25,
           limit: 25,
-          total: nbMessages
+          total: view.nbMessages
         });
       }
     }
