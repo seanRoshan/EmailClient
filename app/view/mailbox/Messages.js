@@ -22,7 +22,7 @@ Ext.define("TutorialApp.view.mailbox.Messages", {
 
       items: [
         {
-          xtype: "mailview"
+          xtype: "form-register"
         }
       ]
     }

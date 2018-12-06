@@ -1,7 +1,7 @@
 /**
  * Overrides to the File field.
  */
-Ext.define("TutorialApp.overrides.form.Form", {
+Ext.define("TutorialApp.overrides.form.field.File", {
   override: "Ext.form.field.File",
   /**
    * @cfg {Boolean} multiple
