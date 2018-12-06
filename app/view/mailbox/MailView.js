@@ -25,6 +25,7 @@ Ext.define("TutorialApp.view.mailbox.MailView", {
       items: [
         {
           xtype: "mailboxes",
+          itemID: "mailboxesTreePanel",
           cls: "email-folders-panel",
           //flex: 0.2,
           margin: 5,

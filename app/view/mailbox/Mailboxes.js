@@ -2,7 +2,6 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
   extend: "Ext.tree.Panel",
   xtype: "mailboxes",
   name: "mailboxesTreePanel",
-  itemID: "mailboxesTreePanel",
 
   store: Ext.create("TutorialApp.view.mailbox.MflDataStore"),
 
@@ -19,9 +18,9 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
       ddGroup: "EmailDragZone",
       //dragGroup: "EmailDragZone",
       enableDrag: false,
-      enableDrop: true,
-      allowContainerDrops: true,
-      forceFit: false
+      enableDrop: false
+      // allowContainerDrops: true,
+      // forceFit: false
     }
   },
   columns: [

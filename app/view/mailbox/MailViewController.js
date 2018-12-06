@@ -161,17 +161,6 @@ Ext.define("TutorialApp.view.mailbox.MailViewController", {
     }
   },
 
-  onGridCellItemClick: function(view, td, cellIndex, record) {
-    if (cellIndex > 0) {
-      this.setCurrentView(
-        "emaildetails",
-        { record: record, openWindow: true },
-        "",
-        "Details"
-      );
-    }
-  },
-
   onGridCellItemDrag: function(view, td, cellIndex, record) {
     console.log("Drag");
   }

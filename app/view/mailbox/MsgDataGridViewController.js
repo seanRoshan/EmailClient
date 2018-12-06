@@ -4,6 +4,7 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGridViewController", {
 
   afterRender: function(view) {
     console.log("afterRender MsgDataGridView!");
+    console.log(view.getXType());
     console.log(view.el.down(".emailRecord"));
     console.log(view);
     console.log(view.up());
@@ -14,5 +15,21 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGridViewController", {
         .up()
         .up()
     );
+  },
+
+  onGridCellItemClick: function(view, td, cellIndex, record) {
+    if (cellIndex > 0) {
+      view
+        .up()
+        .up()
+        .up()
+        .getController()
+        .setCurrentView(
+          "emaildetails",
+          { record: record, openWindow: true },
+          "",
+          "Details"
+        );
+    }
   }
 });

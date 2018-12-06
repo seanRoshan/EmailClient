@@ -4,7 +4,7 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
 
   cls: "email-data-grid",
 
-  //controller: "msgdatagrid",
+  controller: "msgdatagrid",
 
   requires: ["Ext.toolbar.Paging", "Ext.ux.ProgressBarPager"],
 

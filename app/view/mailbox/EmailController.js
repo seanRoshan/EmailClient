@@ -3,6 +3,23 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
 
   alias: "controller.email",
 
+  afterRender: function(view) {
+    //let contentPanel = this.getView().down("#contentPanel");
+    console.log("After Enger");
+    console.log(this.getView());
+    console.log(
+      this.getView()
+        .down("#navigationPanel")
+        .down("#mailboxesTreePanel")
+    );
+    console.log(this.getView().down("#navigationPanel"));
+    // var panelDropTarget = new Ext.dd.DropTarget(contentPanel, {
+    //   notifyDrop: function(dragsource, event, data) {
+    //     // do something with the dragsource
+    //   }
+    // });
+  },
+
   init: function() {
     //this.setCurrentView("inbox");
     //this.setCurrentView("msgdatagrid");
@@ -155,22 +172,5 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
         Ext.resumeLayouts(true);
       }
     }
-  },
-
-  onGridCellItemClick: function(view, td, cellIndex, record) {
-    if (cellIndex > 0) {
-      this.setCurrentView(
-        "emaildetails",
-        { record: record, openWindow: true },
-        "",
-        "Details"
-      );
-    }
-    // if (cellIndex > 1) {
-    //   this.setCurrentView("emaildetails", { record: record });
-    // } else if (cellIndex === 1) {
-    //   //Invert selection
-    //   record.set("favorite", !record.get("favorite"));
-    // }
   }
 });
