@@ -2,27 +2,6 @@ Ext.define("TutorialApp.view.mailbox.MailViewController", {
   extend: "Ext.app.ViewController",
   alias: "controller.mailview",
 
-  // //Creation of tager variable for drop.
-  // formPanelDropTarget: Ext.create("Ext.dd.DropTarget", formPanelDropTargetEl, {
-  //   ddGroup: "GridExample",
-  //   notifyEnter: function(ddSource, e, data) {
-  //     formPanel.body.stopAnimation();
-  //     formPanel.body.highlight();
-  //   },
-  //   notifyDrop: function(ddSource, e, data) {
-  //     var selectedRecord = ddSource.dragData.records[0];
-  //     formPanel.getForm().loadRecord(selectedRecord);
-  //     ddSource.view.store.remove(selectedRecord);
-  //     return true;
-  //   }
-  // }),
-  init: function(view) {
-    console.log("Mailbox initialized!");
-    //let mailboxPanel = view.down("#mailboxes");
-    //let mailboxDropTargetEl = mailboxPanel.body;
-    //console.log(formPanelDropTargetEl);
-  },
-
   onItemClick: function(node, rec) {
     const folderName = rec.data.foldername;
     if (folderName !== "Compose") {
@@ -159,16 +138,5 @@ Ext.define("TutorialApp.view.mailbox.MailViewController", {
         Ext.resumeLayouts(true);
       }
     }
-  },
-
-  onGridCellItemDrag: function(view, td, cellIndex, record) {
-    console.log("Drag");
   }
-
-  // if (cellIndex > 1) {
-  //   this.setCurrentView("emaildetails", { record: record });
-  // } else if (cellIndex === 1) {
-  //   //Invert selection
-  //   record.set("favorite", !record.get("favorite"));
-  // }
 });

@@ -11,12 +11,12 @@ Ext.define("TutorialApp.view.mailbox.RegisterFormViewController", {
       Ext.Object.each(form.getValues(), function(key, value) {
         params[key] = value;
       });
-      this.sendAjaxRequest(params, form);
+      this.sendAjaxRequest(params, form, this.getView());
     }
   },
 
-  sendAjaxRequest: function(paramsObj, form) {
-    console.log(paramsObj);
+  sendAjaxRequest: function(paramsObj, form, view) {
+    //console.log(paramsObj);
     Ext.Ajax.request({
       url:
         "https://morning-lowlands-10589.herokuapp.com/api/emailclient/create",
@@ -27,25 +27,24 @@ Ext.define("TutorialApp.view.mailbox.RegisterFormViewController", {
       //     ajax_req: Ext.util.JSON.encode(params)
       //   },
       success: function(response, opts) {
-        console.log(response);
-        // var obj = Ext.decode(response.responseText);
-        // var cfg = Ext.apply(
-        //   {
-        //     xtype: "emailwindow",
-        //     items: [
-        //       Ext.apply(
-        //         {
-        //           xtype: view,
-        //           obj: obj
-        //         },
-        //         params.targetCfg
-        //       )
-        //     ]
-        //   },
-        //   params.windowCfg
-        // );
-        // myMask.hide();
-        // Ext.create(cfg);
+        responseObj = Ext.JSON.decode(response.responseText);
+        console.log(responseObj);
+
+        let newViewObj = {
+          xtype: "panel",
+          title: responseObj.title,
+          items: [
+            {
+              xtype: "mailview",
+              params: {
+                resourceUrl: responseObj.resourceUrl
+              }
+            }
+          ]
+        };
+
+        let messagesView = view.up().up();
+        messagesView.add(newViewObj);
       },
 
       failure: function(response, opts) {

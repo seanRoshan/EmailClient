@@ -8,21 +8,24 @@ Ext.define("TutorialApp.view.mailbox.Messages", {
   items: [
     {
       xtype: "panel",
-      title: "Mailbox 1",
-
+      title: "+",
       items: [
         {
-          xtype: "mailview"
+          xtype: "form-register"
         }
       ]
     },
     {
       xtype: "panel",
-      title: "+",
+      title: "SeanGmail",
 
       items: [
         {
-          xtype: "form-register"
+          xtype: "mailview",
+          params: {
+            resourceUrl:
+              "https://morning-lowlands-10589.herokuapp.com/api/emailclient/ajax/5bc5581f2fe1400f3d447182/email_accounts/0/folders"
+          }
         }
       ]
     }

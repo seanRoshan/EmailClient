@@ -15,12 +15,13 @@ Ext.define("TutorialApp.view.mailbox.MsgDataGrid", {
     plugins: {
       ptype: "gridviewdragdrop",
       ddGroup: "EmailDragZone",
-      enableDrop: false
-    },
-
-    getRowClass: function(record, rowIndex, rowParams, store) {
-      return "emailRecord";
+      enableDrop: false,
+      enableDrag: true
     }
+
+    // getRowClass: function(record, rowIndex, rowParams, store) {
+    //   return "emailRecord";
+    // }
   },
   enableDragDrop: true,
   multiSelect: true,

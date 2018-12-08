@@ -3,27 +3,23 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
 
   alias: "controller.email",
 
-  afterRender: function(view) {
-    //let contentPanel = this.getView().down("#contentPanel");
-    console.log("After Enger");
-    console.log(this.getView());
-    console.log(
-      this.getView()
-        .down("#navigationPanel")
-        .down("#mailboxesTreePanel")
-    );
-    console.log(this.getView().down("#navigationPanel"));
-    // var panelDropTarget = new Ext.dd.DropTarget(contentPanel, {
-    //   notifyDrop: function(dragsource, event, data) {
-    //     // do something with the dragsource
-    //   }
-    // });
-  },
-
-  init: function() {
-    //this.setCurrentView("inbox");
-    //this.setCurrentView("msgdatagrid");
-  },
+  // afterRender: function(view) {
+  //   //let contentPanel = this.getView().down("#contentPanel");
+  //   // console.log("After Enger");
+  //   // console.log(this.getView());
+  //   // console.log("Mail boxes");
+  //   // console.log(
+  //   //   this.getView()
+  //   //     .down("#navigationPanel")
+  //   //     .down("#mailboxesTreePanel")
+  //   // );
+  //   //console.log(this.getView().down("#navigationPanel"));
+  //   // var panelDropTarget = new Ext.dd.DropTarget(contentPanel, {
+  //   //   notifyDrop: function(dragsource, event, data) {
+  //   //     // do something with the dragsource
+  //   //   }
+  //   // });
+  // },
 
   onItemClick: function(node, rec) {
     const folderName = rec.data.foldername;
@@ -116,15 +112,6 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
       if (resourceURL) {
         Ext.suspendLayouts();
         contentPanel.removeAll(true);
-        contentPanel.add(
-          Ext.apply({
-            xtype: view,
-            viewName: folderName,
-            itemId: "inboxPanel",
-            nbMessages: params
-          })
-        );
-        let inboxPanel = contentPanel.down("#inboxPanel");
 
         let myMask = new Ext.LoadMask({
           msg: "Please wait...",
@@ -152,6 +139,15 @@ Ext.define("TutorialApp.view.mailbox.EmailController", {
 
         storeObj.load(function(data, operation, success) {
           if (success === true) {
+            contentPanel.add(
+              Ext.apply({
+                xtype: view,
+                viewName: folderName,
+                itemId: "inboxPanel",
+                nbMessages: params
+              })
+            );
+            let inboxPanel = contentPanel.down("#inboxPanel");
             inboxPanel.setStore(storeObj);
             myMask.hide();
           }

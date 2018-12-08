@@ -7,20 +7,19 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
 
   controller: "mailboxes",
 
+  params: {},
+
   useArrows: false,
   align: "stretch",
   rootVisible: false,
   hideHeaders: true,
-
   viewConfig: {
     plugins: {
       ptype: "treeviewdragdrop",
       ddGroup: "EmailDragZone",
-      //dragGroup: "EmailDragZone",
       enableDrag: false,
-      enableDrop: false
-      // allowContainerDrops: true,
-      // forceFit: false
+      enableDrop: true,
+      appendOnly: true
     }
   },
   columns: [
@@ -31,23 +30,6 @@ Ext.define("TutorialApp.view.mailbox.Mailboxes", {
     }
   ],
   listeners: {
-    beforedrop: function(node, data, dropRec, dropPosition) {
-      console.log("Before Drop!");
-      console.log(node);
-      console.log(data);
-      console.log(dropRec);
-      console.log(dropPosition);
-      this.viewConfig.plugins.enableDrop = false;
-      stop();
-    },
-
-    drop: function(node, data, dropRec, dropPosition) {
-      console.log("Drop!");
-      //dropRec = "";
-    },
-
-    onNodeDrop: function(targetNode, dragZone, e, data) {
-      console.log("dropped!");
-    }
+    beforedrop: "processDrop"
   }
 });
